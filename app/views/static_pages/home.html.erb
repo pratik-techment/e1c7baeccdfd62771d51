@@ -1,5 +1,5 @@
 <div>
-    <h1><%= current_user.name %></h1>
+    <h1><%= current_user.email %></h1>
     <h3>Post Tweet</h3>
     <%= form_for([@user, @user.tweets.build]) do |f| %>
       <p>
@@ -12,9 +12,10 @@
     <% end %>
     <h3>Tweet Feed</h3>
     <% if @feed_items.any? %>
-    <% @feed_items.each do |tweet| %>
-      <ol>
-        <%= tweet.content %>
-      </ol>
+      <% @feed_items.each do |tweet| %>
+        <ol>
+          <%= tweet.content %>
+        </ol>
+      <% end %>
     <% end %>
 </div>

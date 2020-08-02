@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
    has_many :tweets, dependent: :destroy
+
+   def feed
+     #tweets from all users followed by current user
+   end
 end
