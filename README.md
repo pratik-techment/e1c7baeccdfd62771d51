@@ -1,5 +1,8 @@
+Home page with Login with device login
+
+API:
 List tweet URL
-get http://localhost:3000/users/1/feed
+get http://localhost:3000/users/1/feed?sort_type=asc
 
 profile URL
 get http://localhost:3000/users/1/profile
