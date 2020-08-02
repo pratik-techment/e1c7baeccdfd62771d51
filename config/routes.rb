@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, defaults: {format: :json} do
       member do
-        get :profile
+        get :profile, :feed
       end
       resources :tweets
       resources :relationships, only: [:create, :destroy]

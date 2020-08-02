@@ -18,8 +18,14 @@ class User < ApplicationRecord
     has_many :following, through: :active_relationships, source: :followed
     has_many :followers, through: :passive_relationships, source: :follower
 
-   def feed
-     #tweets from all users followed by current user
+   def feed(sort_type)
+   following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
+     if sort_type == "asc"
+      Tweet.where("user_id IN (#{following_ids})", user_id: id).order('tweets.created_at asc')
+      else
+      Tweet.where("user_id IN (#{following_ids})", user_id: id).order('tweets.created_at desc')
+    end
    end
 
 

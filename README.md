@@ -1,24 +1,11 @@
-# README
+List tweet URL
+get http://localhost:3000/users/1/feed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+profile URL
+get http://localhost:3000/users/1/profile
 
-Things you may want to cover:
+Follow
+post http://localhost:3000/users/1/relationships?followed_id=2
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+unfollow
+delete http://localhost:3000/users/1/relationships?followed_id=2
