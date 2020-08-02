@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
 
   root 'static_pages#home'
 
-  resources :users do
+  devise_for :users
+  # , controllers: { sessions: :sessions },
+  #                  path_names: { sign_in: :login }
+
+  resources :users, defaults: {format: :json} do
       resources :tweets
+      resources :relationships, only: [:create, :destroy]
   end
 end

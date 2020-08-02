@@ -1,8 +1,8 @@
 class TweetsController < ApplicationController
 
 	def create
-    user = User.find(params[:user_id])
-    @tweet = user.tweets.build(tweet_params)
+    set_current_user
+    @tweet = @user.tweets.build(tweet_params)
     if @tweet.save
       flash[:success] = "Tweet created!"
       respond_to do |format|
@@ -18,6 +18,10 @@ class TweetsController < ApplicationController
   end
 
 	private
+
+    def set_current_user
+        @user = User.find(params[:user_id])
+    end
 
 	  def tweet_params
   	  params.require(:tweet).permit(:content)
