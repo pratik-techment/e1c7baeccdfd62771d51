@@ -21,11 +21,13 @@ class User < ApplicationRecord
    def feed(sort_type)
    following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :user_id"
+                     tweet = []
      if sort_type == "asc"
-      Tweet.where("user_id IN (#{following_ids})", user_id: id).order('tweets.created_at asc')
+      tweet = Tweet.where("user_id IN (#{following_ids})", user_id: id).order('tweets.created_at asc')
       else
-      Tweet.where("user_id IN (#{following_ids})", user_id: id).order('tweets.created_at desc')
+      tweet = Tweet.where("user_id IN (#{following_ids})", user_id: id).order('tweets.created_at desc')
     end
+    tweet
    end
 
 

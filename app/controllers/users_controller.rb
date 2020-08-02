@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @feed = @user.feed(params[:sort_type])
     feed_data = @feed.map do |feed|
-      {content: feed.content, author_id: feed.user}
+      {content: feed.content, author_id: feed.user.id}
     end
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url }
