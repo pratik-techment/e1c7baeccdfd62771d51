@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   #                  path_names: { sign_in: :login }
 
   resources :users, defaults: {format: :json} do
+      member do
+        get :profile
+      end
       resources :tweets
       resources :relationships, only: [:create, :destroy]
   end
